@@ -1,0 +1,24 @@
+model Blog {
+    id              Int @id @default(autoincrement())
+    author_id       Int
+    title           String
+    subtitle        String
+    content         Text
+    status          BlogStatus
+    featured_image  String
+    submitted_at    DateTime
+    published_at    DateTime
+    created_at      DateTime @default(now())
+    updated_at      DateTime @updatedAt
+
+    author          User @relation (fields:[author_id], refernces:[user_id])
+
+@@map("blogs")
+
+}
+
+enum BlogStatus {
+    DRAFT
+    SUBMITTED 
+    PUBLISHED
+} 
