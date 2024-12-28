@@ -1,7 +1,7 @@
 model Package {
 id            Int  @id @default(autoincrement())
-name                  String?
-description           String?
+name                  String
+description           String
 duration_in_days      Int
 active                Boolean @default(true)
 price                 Float

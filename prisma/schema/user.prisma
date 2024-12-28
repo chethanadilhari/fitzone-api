@@ -5,7 +5,7 @@ model User {
     password         String
     f_name           String
     l_name           String?
-    phone            String?
+    phone            String
     address          String?
     gender           Gender
     created_at       DateTime @default(now())
