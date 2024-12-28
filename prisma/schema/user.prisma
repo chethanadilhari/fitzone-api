@@ -11,6 +11,8 @@ model User {
     created_at       DateTime @default(now())
     updated_at       DateTime @updatedAt
     active           Boolean @default(true)
+
+    memberships      Membership[]
     
     @@map("users")
 }

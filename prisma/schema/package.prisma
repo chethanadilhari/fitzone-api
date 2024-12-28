@@ -1,0 +1,15 @@
+model Package {
+id            Int  @id @default(autoincrement())
+name                  String?
+description           String?
+duration_in_days      Int
+active                Boolean @default(true)
+price                 Float
+created_at            DateTime @default(now())
+updated_at            DateTime @updatedAt
+
+memberships           Membership[]
+
+@@map("packages")
+
+}
