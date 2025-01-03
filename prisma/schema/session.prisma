@@ -1,14 +1,13 @@
 model Session {
-    id               Int @id @default (autoincrement())
-    trainer_id       Int
-    name             String
-    description      String
-    schedule         DateTime
-    created_at       DateTime @default (now())
-    updated_at       DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  trainer_id  Int
+  name        String
+  description String
+  schedule    DateTime
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 
-    trainer          Trainer @relation(fields: [trainer_id], references: [id])
+  trainer Trainer @relation(fields: [trainer_id], references: [id])
 
-    @@map ("sessions")
-
+  @@map("sessions")
 }

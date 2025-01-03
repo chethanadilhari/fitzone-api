@@ -1,24 +1,26 @@
 model User {
-    id               Int      @id @default(autoincrement())
-    email            String   @unique
-    email_verified   Boolean @default(false)
-    password         String
-    f_name           String
-    l_name           String?
-    phone            String
-    address          String?
-    gender           Gender
-    created_at       DateTime @default(now())
-    updated_at       DateTime @updatedAt
-    active           Boolean @default(true)
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  email_verified Boolean  @default(false)
+  password       String
+  f_name         String
+  l_name         String?
+  phone          String
+  address        String?
+  gender         Gender
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+  active         Boolean  @default(true)
 
-    memberships      Membership[]
-    
-    @@map("users")
+  memberships Membership[]
+  Blog        Blog[]
+  Invoice     Invoice[]
+
+  @@map("users")
 }
 
 enum Gender {
-    MALE
-    FEMALE
-    OTHER
+  MALE
+  FEMALE
+  OTHER
 }

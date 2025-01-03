@@ -1,23 +1,21 @@
 model Membership {
-    id                          Int      @id @default(autoincrement())
-    package_id                  Int
-    user_id                     Int
-    started_at                  DateTime
-    expired_at                  DateTime
-    status                      MembershipStatus
-    created_at                  DateTime @default(now())
-    updated_at                  DateTime @updatedAt
+  id         Int              @id @default(autoincrement())
+  package_id Int
+  user_id    Int
+  started_at DateTime
+  expired_at DateTime
+  status     MembershipStatus
+  created_at DateTime         @default(now())
+  updated_at DateTime         @updatedAt
 
-    package                    Package   @relation(fields: [package_id], references: [id])
-    user                       User      @relation(fields: [user_id], references: [id])
+  package Package @relation(fields: [package_id], references: [id])
+  user    User    @relation(fields: [user_id], references: [id])
 
-
-@@map("memberships")
-
+  @@map("memberships")
 }
 
-enum MembershipStatus{
-    ACTIVE
-    EXPIRED
-    CANCELLED
+enum MembershipStatus {
+  ACTIVE
+  EXPIRED
+  CANCELLED
 }

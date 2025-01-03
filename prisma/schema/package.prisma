@@ -1,15 +1,16 @@
 model Package {
-id            Int  @id @default(autoincrement())
-name                  String
-description           String
-duration_in_days      Int
-active                Boolean @default(true)
-price                 Float
-created_at            DateTime @default(now())
-updated_at            DateTime @updatedAt
+  id                     Int      @id @default(autoincrement())
+  name                   String
+  description            String
+  active                 Boolean  @default(true)
+  price                  Float
+  group_class_count      Int
+  personal_training_count  Int
+  nutrition_consultations Int
+  created_at             DateTime @default(now())
+  updated_at             DateTime @updatedAt
 
-memberships           Membership[]
+  memberships Membership[]
 
-@@map("packages")
-
+  @@map("packages")
 }

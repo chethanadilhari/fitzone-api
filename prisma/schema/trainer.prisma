@@ -1,14 +1,12 @@
-model Trainer{
-    id                  Int @id @default(autoincrement())
-    name                String 
-    specialization      String
-    experience_years    Int
-    created_at          DateTime @default(now())
-    updated_at          DateTime @updatedAt
+model Trainer {
+  id               Int      @id @default(autoincrement())
+  name             String
+  specialization   String
+  experience_years Int
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
 
+  sessions Session[]
 
-    sessions      Session[]   
-
-@@map ("trainers")
-
+  @@map("trainers")
 }
