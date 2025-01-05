@@ -2,8 +2,6 @@ model Membership {
   id         Int              @id @default(autoincrement())
   package_id Int
   user_id    Int
-  started_at DateTime
-  expired_at DateTime
   status     MembershipStatus
   created_at DateTime         @default(now())
   updated_at DateTime         @updatedAt
@@ -15,6 +13,7 @@ model Membership {
 }
 
 enum MembershipStatus {
+  PENDING
   ACTIVE
   EXPIRED
   CANCELLED

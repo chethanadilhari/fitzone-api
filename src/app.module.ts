@@ -1,25 +1,36 @@
-import { Module } from '@nestjs/common';
-import { APP_GUARD } from '@nestjs/core';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { PrismaService } from './core/services/prisma.service';
 import { BlogModule } from './blog/blog.module';
 import { AuthModule } from './auth/auth.module';
 import { MembershipModule } from './membership/membership.module';
 import { MembershipGuard } from './core/guards/membership.guard';
+import { APP_PIPE } from '@nestjs/core';
 
 @Module({
   imports: [BlogModule, AuthModule, MembershipModule],
   controllers: [AppController],
   providers: [
     {
-      provide: APP_GUARD,
+      provide: APP_PIPE,
+      useValue: new ValidationPipe({
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    },
+    {
+      provide: 'AuthGuard',
       useClass: AuthGuard,
     },
     {
-      provide: APP_GUARD,
+      provide: 'MembershipGuard',
       useClass: MembershipGuard,
     },
-    AppService],
+    PrismaService,
+    AppService,
+  ],
 })
 export class AppModule {}
