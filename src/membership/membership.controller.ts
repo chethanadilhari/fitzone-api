@@ -32,6 +32,8 @@ export class MembershipController {
   async cancel(@Req() req: any) {
     const userId = req.session.userId;
     return await this.membershipService.cancel(userId);
+
+  
+   
   }
 }
-

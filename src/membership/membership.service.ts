@@ -68,4 +68,15 @@ export class MembershipService {
             },
         });
     }
+
+    async getAllMemberships(userId: number) {
+        return await this.prismaService.membership.findMany({
+            where: {
+                user_id: userId
+            },
+            include: {
+                package: true,
+            },
+        });
+    }
 }
