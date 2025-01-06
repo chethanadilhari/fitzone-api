@@ -1,4 +1,4 @@
-import { Controller,Req, Body, Post,Get } from '@nestjs/common';
+import { Controller,Req, Body, Post,Get, HttpException, HttpStatus } from '@nestjs/common';
 import { AuthService } from './services/auth.service';
 import { RegisterDto } from './dto/register.dto';
 import { loginDto } from './dto/login.dto';
@@ -25,7 +25,7 @@ export class AuthController {
   @Get('session')
   async session(@Req() req: any) {
     if (!req.session || !req.session.userId) {
-      return 'No user session found';
+      return new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
     return req.session.userId;
   }

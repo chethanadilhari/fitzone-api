@@ -10,7 +10,10 @@ export class MembershipService {
     async getMembership(userId: number) {
         const membership = await this.prismaService.membership.findFirst({
             where: {
-                user_id: userId,
+            user_id: userId,
+            },
+            include: {
+            package: true,
             },
         });
         if (!membership) {
@@ -47,7 +50,7 @@ export class MembershipService {
         const membership = await this.prismaService.membership.findFirst({
             where: {
                 user_id: userId,
-                status: 'ACTIVE'
+                // status: 'ACTIVE'
             },
         });
         if (!membership) {
@@ -57,6 +60,9 @@ export class MembershipService {
             where: {
                 id: membership.id
             },
+            include: {
+                package: true,
+                },
             data: {
                 status: 'CANCELLED'
             },
