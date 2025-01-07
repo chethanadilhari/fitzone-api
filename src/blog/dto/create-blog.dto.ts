@@ -1,4 +1,5 @@
-import { IsString, IsNotEmpty, MinLength } from 'class-validator';
+import { BlogStatus } from '@prisma/client';
+import { IsString, IsNotEmpty, MinLength, IsEnum } from 'class-validator';
 
 export class CreateBlogDto {
     @IsString()
@@ -12,5 +13,12 @@ export class CreateBlogDto {
 
     @IsString()
     @IsNotEmpty()
-    author: string;
+    featured_image: string;
+
+    @IsEnum(BlogStatus)
+    status: BlogStatus;
+
+    @IsString()
+    @IsNotEmpty()
+    description: string;
 }

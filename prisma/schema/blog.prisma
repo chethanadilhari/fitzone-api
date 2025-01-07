@@ -2,12 +2,11 @@ model Blog {
   id             Int        @id @default(autoincrement())
   author_id      Int
   title          String
-  subtitle       String
   content        String
+  description    String
   status         BlogStatus
   featured_image String
-  submitted_at   DateTime
-  published_at   DateTime
+  published_at   DateTime? 
   created_at     DateTime   @default(now())
   updated_at     DateTime   @updatedAt
 
@@ -18,6 +17,5 @@ model Blog {
 
 enum BlogStatus {
   DRAFT
-  SUBMITTED
   PUBLISHED
 }
