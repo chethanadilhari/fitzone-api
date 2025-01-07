@@ -35,10 +35,19 @@ export class BlogService {
           }
         }
         ]
+      },
+      include: {
+        author: true
       }
       });
     } else {
-      result = await this.prismaService.blog.findMany();
+      result = await this.prismaService.blog.findMany(
+      {
+        include: {
+          author: true
+        }
+      }
+      );
     }
     return result;
   }
