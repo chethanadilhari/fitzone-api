@@ -17,8 +17,8 @@ export class BlogController {
 
   @Get()
   findAll(@Req() req: any) {
-    const query = req.query.query || '';
-    return this.blogService.findAll(query);
+    const search = req.query.search || '';
+    return this.blogService.findAll(search);
   }
 
   @UseGuards(AuthGuard)
