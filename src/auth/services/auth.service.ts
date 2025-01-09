@@ -47,6 +47,7 @@ export class AuthService {
             );
         }
         req.session.userId = foundUser.id;
+        req.session.userRole = foundUser.role;
         await new Promise((resolve, reject) =>
             req.session.save((err: any) => {
               if (err) reject(err);

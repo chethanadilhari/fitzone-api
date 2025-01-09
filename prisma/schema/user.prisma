@@ -8,6 +8,7 @@ model User {
   phone          String
   address        String?
   gender         Gender
+  role           Role @default(MEMBER)
   created_at     DateTime @default(now())
   updated_at     DateTime @updatedAt
   active         Boolean  @default(true)
@@ -15,8 +16,16 @@ model User {
   memberships Membership[]
   Blog        Blog[]
   Invoice     Invoice[]
+  Ticket      Ticket[]
+  Reply       Reply[]
 
   @@map("users")
+}
+
+enum Role {
+    MEMBER
+    STAFF
+    ADMIN
 }
 
 enum Gender {

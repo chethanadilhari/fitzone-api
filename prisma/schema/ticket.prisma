@@ -1,0 +1,20 @@
+model Ticket {
+    id        Int       @id @default(autoincrement())
+    subject     String
+    message   String
+    status    TicketStatus @default(OPEN)
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    user_id  Int
+    
+    user    User      @relation(fields: [user_id], references: [id])
+    replies   Reply[]
+
+    @@map("tickets")
+}
+
+enum TicketStatus {
+    OPEN
+    IN_PROGRESS
+    CLOSED
+}

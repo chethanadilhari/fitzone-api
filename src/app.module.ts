@@ -7,10 +7,12 @@ import { BlogModule } from './blog/blog.module';
 import { AuthModule } from './auth/auth.module';
 import { MembershipModule } from './membership/membership.module';
 import { MembershipGuard } from './core/guards/membership.guard';
+import { StaffGuard } from './core/guards/staff.guard';
 import { APP_PIPE } from '@nestjs/core';
+import { SupportModule } from './support/support.module';
 
 @Module({
-  imports: [BlogModule, AuthModule, MembershipModule],
+  imports: [BlogModule, AuthModule, MembershipModule, SupportModule],
   controllers: [AppController],
   providers: [
     {
@@ -24,6 +26,10 @@ import { APP_PIPE } from '@nestjs/core';
     {
       provide: 'AuthGuard',
       useClass: AuthGuard,
+    },
+    {
+      provide: 'StaffGuard',
+      useClass: StaffGuard,
     },
     {
       provide: 'MembershipGuard',

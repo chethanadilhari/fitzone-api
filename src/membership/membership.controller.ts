@@ -1,8 +1,7 @@
-import { Controller, Get, UseGuards, Req, Post, Body, Patch } from '@nestjs/common';
+import { Controller, Get, UseGuards, Req, Post, Body } from '@nestjs/common';
 import { MembershipService } from './membership.service';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { SubscribeDto } from './dto/subscribe.dto';
-import { get } from 'http';
 
 @UseGuards(AuthGuard)
 @Controller('membership')
