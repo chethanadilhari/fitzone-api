@@ -12,7 +12,7 @@ export class AuthService {
         const password = await this.passwordService.hashPassword(user.password);
         return this.prismaService.user.create({
             data: {
-                email: user.email,
+                email: user.email.toLocaleLowerCase(),
                 password,
                 f_name: user.firstName,
                 l_name: user.lastName,
@@ -27,7 +27,7 @@ export class AuthService {
     async login(req:any,user: loginDto) {
         const foundUser = await this.prismaService.user.findUnique({
             where: {
-            email: user.email
+            email: user.email.toLowerCase()
             }
         });
 

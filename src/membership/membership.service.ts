@@ -12,6 +12,9 @@ export class MembershipService {
             where: {
             user_id: userId,
             },
+            orderBy: {
+            created_at: 'desc',
+            },
             include: {
             package: true,
             },

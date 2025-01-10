@@ -36,6 +36,9 @@ export class BlogService {
         }
         ]
       },
+      orderBy: {
+        created_at: 'desc'
+      },
       include: {
         author: true
       }
