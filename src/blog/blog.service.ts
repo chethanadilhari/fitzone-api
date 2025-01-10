@@ -56,8 +56,17 @@ export class BlogService {
     const result = await this.prismaService.blog.findUnique({
       where: {
         id: id
+      },
+      include: {
+        author: {
+          select: {
+            f_name: true,
+            l_name: true
+          }
+        }
       }
     });
+
     return result;
   }
 

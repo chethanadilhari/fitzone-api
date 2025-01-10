@@ -58,6 +58,21 @@ export class AuthService {
         return foundUser;
     }
 
+    async me(req:any) {
+        if (!req.session.userId) {
+            throw new HttpException(
+                'Unauthorized',
+                HttpStatus.UNAUTHORIZED,
+            );
+        }
+        return this.prismaService.user.findUnique({
+            where: {
+                id: req.session.userId
+            }
+        });
+        return req.session.userId;
+    }
+
     async logout(req:any) {
         req.session.destroy();
         return 'Logged out';

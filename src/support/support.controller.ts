@@ -1,4 +1,4 @@
-import { Controller, UseGuards, Get, Post, Req,Body } from '@nestjs/common';
+import { Controller, UseGuards, Get, Post, Req,Body, Patch } from '@nestjs/common';
 import { SupportService } from './support.service';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { CreateTicketDto } from './dto/create-ticket.dto';
@@ -46,7 +46,7 @@ export class SupportController {
   }
 
   @UseGuards(StaffGuard)
-  @Post('ticket/:ticketId/update')
+  @Patch('ticket/:ticketId')
   updateTicket(@Req() req: any, @Body() body: UpdateTicketDto) {
     const userId = req.session.userId;
     const ticketId = req.params.ticketId;

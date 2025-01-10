@@ -24,9 +24,6 @@ export class AuthController {
 
   @Get('session')
   async session(@Req() req: any) {
-    if (!req.session || !req.session.userId) {
-      return new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-    }
-    return req.session.userId;
+    return await this.authService.me(req);
   }
 }

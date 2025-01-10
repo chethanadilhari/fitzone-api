@@ -46,6 +46,12 @@ export class SupportService {
                     }
                 }
                 }
+            },
+            user: {
+                select: {
+                f_name: true,
+                l_name: true
+                }
             }
             }
         });
