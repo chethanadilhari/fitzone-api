@@ -1,7 +1,7 @@
 model Ticket {
     id        Int       @id @default(autoincrement())
-    subject     String
-    message   String
+    subject     String @db.Text
+    message   String @db.Text
     status    TicketStatus @default(OPEN)
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt

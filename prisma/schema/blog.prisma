@@ -3,7 +3,7 @@ model Blog {
   author_id      Int
   title          String
   content        String @db.Text
-  description    String
+  description    String @db.Text
   status         BlogStatus
   featured_image String
   published_at   DateTime? 
